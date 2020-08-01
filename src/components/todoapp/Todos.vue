@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <h2 class="text-center">Todo App using Vuex</h2>
+    <h2 class="text-center">Vuex Todo App</h2>
     <AddTodo></AddTodo>
     <div class="d-flex-aic p-3 m-3">
       <FilterTodos></FilterTodos>
       <div class="legend">
-        <span class="bg-light p-2">Double click to mark as complete</span>
+        <span class="bg-light p-2">Click to mark as complete</span>
         <span>
           <span class="incomplete-box"></span> = Incomplete
         </span>
@@ -16,15 +16,8 @@
     </div>
     <h1 class="text-center">Todo List</h1>
     <div class="todos">
-      <div
-        :class="{'is-complete': todo.completed}"
-        @dblclick="onDBLclick(todo)"
-        class="todo"
-        v-for="todo in allTodos"
-        :key="todo.id"
-      >
-        {{ todo.title}}
-        <i class="fa fa-trash" aria-hidden="true" @click="deleteTodo(todo.id)"></i>
+      <div v-for="todo in allTodos" :key="todo.id">
+        <TodoItem :todo="todo"></TodoItem>
       </div>
     </div>
   </div>
@@ -32,6 +25,7 @@
 
 
 <script>
+import TodoItem from "./TodoItem";
 import { mapGetters, mapActions } from "vuex";
 import AddTodo from "./addTodo";
 import FilterTodos from "./filterTodos";
@@ -42,18 +36,11 @@ export default {
   },
   components: {
     AddTodo,
-    FilterTodos
+    FilterTodos,
+    TodoItem
   },
   methods: {
-    ...mapActions(["fetchTodos", "deleteTodo", "updateTodo"]),
-    onDBLclick(todo) {
-      const updTodo = {
-        id: todo.id,
-        title: todo.title,
-        completed: !todo.completed
-      };
-      this.updateTodo(updTodo);
-    }
+    ...mapActions(["fetchTodos"])
   },
   created() {
     this.fetchTodos();

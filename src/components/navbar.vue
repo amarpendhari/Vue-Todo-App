@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-light bg-light nav nav-pills justify-content-center">
       <router-link class="nav-link" to="/">Todo-APP</router-link>
-      <router-link class="nav-link" to="/todoappVuex">Todo-APP with Vuex</router-link>
+      <router-link class="nav-link" to="/todoappVuex">Vuex Todo App</router-link>
       <router-link class="nav-link" to="/about">About</router-link>
     </nav>
   </div>

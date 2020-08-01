@@ -15,20 +15,21 @@ const actions = {
     );
     commit("setTodos", response.data);
   },
+
   async addTodo({ commit }, title) {
-    const response = await Axios.post(
-      "https://jsonplaceholder.typicode.com/todos",
-      {
-        title,
-        completed: false
-      }
-    );
-    commit("newTodo", response.data);
+    const newtodo = {
+      title,
+      completed: false,
+      id: state.todos.length + 1
+    };
+    commit("newTodo", newtodo);
   },
+
   async deleteTodo({ commit }, id) {
     await Axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
     commit("removeTodo", id);
   },
+
   async filterTodo({ commit }, e) {
     // Get selected number
     const limit = parseInt(
@@ -39,6 +40,7 @@ const actions = {
     );
     commit("setTodos", response.data);
   },
+
   async updateTodo({ commit }, updTodo) {
     const response = await Axios.put(
       `https://jsonplaceholder.typicode.com/todos/${updTodo.id}`,
