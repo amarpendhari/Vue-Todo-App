@@ -1,4 +1,4 @@
-# project2
+# Vue Todo App
 
 ## Project setup
 ```
@@ -45,4 +45,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Add Todo
 - Delete Todo
 - Mark Todo as Completed or Not
-- Ugh !!! That's it.  
